@@ -21,13 +21,12 @@ with open("coco.names", "r") as f:
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
-# Load individual scene images (JPG format)
+# Load individual scene images and object images (all in JPG format)
 num_scene_images = 10  # Update with the actual number of scene images
-individual_scene_images = [cv2.imread(f"scene_image_{i}.jpg") for i in range(1, num_scene_images + 1)]
-
-# Load individual object images (PNG format)
 num_object_images = 20  # Update with the actual number of object images
-individual_object_images = [cv2.imread(f"object_image_{i}.png", cv2.IMREAD_UNCHANGED) for i in range(1, num_object_images + 1)]
+
+individual_scene_images = [cv2.imread(f"scene_image_{i}.jpg") for i in range(1, num_scene_images + 1)]
+individual_object_images = [cv2.imread(f"object_image_{i}.jpg") for i in range(1, num_object_images + 1)]
 
 # Function to stitch images using simple image concatenation
 def stitch_images(images):
@@ -66,7 +65,3 @@ stitched_scene_image = stitch_images(individual_scene_images)
 # Identify the location of each object in the stitched scene image
 # This would involve placing detected objects accurately on the stitched image
 # Additional processing is required to map object coordinates to the stitched image
-
-# You'll need to handle the placement of detected objects accurately onto the stitched image,
-# considering potential scaling or transformations due to the stitching process.
-# The accuracy of this process highly depends on maintaining consistency in image dimensions, perspectives, and object scales across the different scene images.
