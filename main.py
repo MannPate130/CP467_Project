@@ -22,8 +22,8 @@ layer_names = net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
 # Load individual scene images and object images (all in JPG format)
-num_scene_images = 10  # Update with the actual number of scene images
-num_object_images = 20  # Update with the actual number of object images
+num_scene_images = 21  # Update with the actual number of scene images
+num_object_images = 56  # Update with the actual number of object images
 
 individual_scene_images = [cv2.imread(f"scene_image_{i}.jpg") for i in range(1, num_scene_images + 1)]
 individual_object_images = [cv2.imread(f"object_image_{i}.jpg") for i in range(1, num_object_images + 1)]
